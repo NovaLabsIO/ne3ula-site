@@ -1,32 +1,23 @@
 /*
-NE3ULA SYSTEM KERNEL
-Central registry for world architecture.
-This will eventually power AXZIO and the NE3ULAVERSE engine.
+NE3ULA system kernel.
+Central registry for the lightweight application architecture.
 */
 
-export const NE3ULA = {
-  world: {
-    name: "NE3ULAVERSE",
-    version: "0.1",
-  },
+import { NE3ULA_IDENTITY, type Ne3ulaIdentity } from './identity';
+import { NE3ULA_INTERFACE, type Ne3ulaInterface } from './interface';
+import { NE3ULA_MYTH, type Ne3ulaMyth } from './myth';
+import { NE3ULA_WORLD, type Ne3ulaWorld } from './world';
 
-  pillars: [
-    "Body",
-    "Mind",
-    "Heart",
-    "Spirit"
-  ],
+export type Ne3ulaSystem = {
+	world: Ne3ulaWorld;
+	myth: Ne3ulaMyth;
+	identity: Ne3ulaIdentity;
+	interface: Ne3ulaInterface;
+};
 
-  layers: [
-    "Myth",
-    "Identity",
-    "Engine",
-    "Interface"
-  ],
-
-  interfaces: {
-    web: true,
-    axzio: true,
-    mobile: false
-  }
-}
+export const NE3ULA_SYSTEM: Ne3ulaSystem = {
+	world: NE3ULA_WORLD,
+	myth: NE3ULA_MYTH,
+	identity: NE3ULA_IDENTITY,
+	interface: NE3ULA_INTERFACE
+};
