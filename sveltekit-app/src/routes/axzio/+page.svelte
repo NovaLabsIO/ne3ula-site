@@ -1,9 +1,11 @@
 <script lang="ts">
   import { ASSETS } from '$lib/assets/registry';
+  import { getSystem } from '$lib/ne3ula/get-system';
   import Footer from '$lib/components/Footer.svelte';
   import PageNav from '$lib/components/PageNav.svelte';
 
   const enterBackgroundImage = `linear-gradient(to bottom, rgba(3, 4, 10, 0.55), rgba(2, 3, 8, 0.7)), url('${ASSETS.backgrounds.enter}')`;
+  const system = getSystem();
 
   const pathways = [
     {
@@ -43,6 +45,9 @@
     <p>
       AXZIO is the interface for reflection, creation, and becoming.<br />
       No feeds. No performance. Just signal.
+    </p>
+    <p class="system-meta" aria-label="NE3ULA system metadata">
+      {system.worldName} v{system.version} / primary interface: {system.primaryInterface}
     </p>
   </header>
 
@@ -112,6 +117,20 @@
     color: rgba(235, 240, 255, 0.72);
     text-wrap: pretty;
     text-shadow: 0 6px 20px rgba(0, 0, 0, 0.42);
+  }
+
+  .system-meta {
+    max-width: none;
+    font:
+      500 11px/1.4 ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      monospace;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(220, 230, 255, 0.54);
   }
 
   .center-cta {
