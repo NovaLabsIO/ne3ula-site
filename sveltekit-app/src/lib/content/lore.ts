@@ -1,11 +1,9 @@
 /*
-Renderable lore copy for the site experience.
-It presents selected worldbuilding signals rather than the full system knowledge source.
+Dormant lore module reserved for future ontology work.
+Lore is intentionally excluded from the active public content model until the myth/lore boundary is finalized.
 */
 
-import type { ContentPage } from './types';
-
-export const LORE_CONTENT: ContentPage = {
+export const LORE_CONTENT = {
 	key: 'lore',
 	title: 'LORE',
 	description: 'A lightweight lore layer for the NE3ULA world, signals, and symbols.',
@@ -39,4 +37,4 @@ export const LORE_CONTENT: ContentPage = {
 			]
 		}
 	]
-};
+} as const;

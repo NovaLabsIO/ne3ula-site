@@ -3,7 +3,7 @@ Typed contracts for renderable site content.
 These shapes describe presentation-ready copy, not canonical NE3ULA domain truth.
 */
 
-export type ContentKey = 'myth' | 'lore' | 'engine' | 'axzio';
+export type ContentKey = 'myth' | 'engine' | 'axzio';
 
 export type ContentMetadata = Record<string, string>;
 

@@ -5,13 +5,11 @@ This composes curated content entries without redefining NE3ULA domain/system tr
 
 import { AXZIO_CONTENT } from './axzio';
 import { ENGINE_CONTENT } from './engine';
-import { LORE_CONTENT } from './lore';
 import { MYTH_CONTENT } from './myth';
 import type { ContentKey, ContentPage } from './types';
 
 export const CONTENT_PAGES: Record<ContentKey, ContentPage> = {
 	myth: MYTH_CONTENT,
-	lore: LORE_CONTENT,
 	engine: ENGINE_CONTENT,
 	axzio: AXZIO_CONTENT
 };
