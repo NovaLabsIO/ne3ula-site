@@ -47,10 +47,7 @@
 
 <style>
   :global(body) {
-    background:
-      radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.08), transparent 34%),
-      radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.03), transparent 52%),
-      linear-gradient(180deg, #020202 0%, #05060a 46%, #020202 100%);
+    background: #05060a;
   }
 
   .wrap {
