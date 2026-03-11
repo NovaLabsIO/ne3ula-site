@@ -1,6 +1,9 @@
 <script lang="ts">
+  import { ASSETS } from '$lib/assets/registry';
   import Footer from '$lib/components/Footer.svelte';
   import PageNav from '$lib/components/PageNav.svelte';
+
+  const enterBackgroundImage = `linear-gradient(to bottom, rgba(3, 4, 10, 0.55), rgba(2, 3, 8, 0.7)), url('${ASSETS.backgrounds.enter}')`;
 
   const pathways = [
     {
@@ -34,7 +37,7 @@
   />
 </svelte:head>
 
-<main class="enter-page">
+<main class="enter-page" style:background-image={enterBackgroundImage}>
   <header class="hero">
     <h1>BEGIN AXZIO</h1>
     <p>
@@ -76,9 +79,6 @@
     box-sizing: border-box;
     color: rgba(245, 248, 255, 0.94);
     background-color: #02040a;
-    background-image:
-      linear-gradient(to bottom, rgba(3, 4, 10, 0.55), rgba(2, 3, 8, 0.7)),
-      url('/assets/shared/bg-enter-v2.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
