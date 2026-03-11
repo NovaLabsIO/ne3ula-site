@@ -1,0 +1,25 @@
+/*
+Content registry for renderable site pages.
+This composes curated content entries without redefining NE3ULA domain/system truth.
+*/
+
+import { AXZIO_CONTENT } from './axzio';
+import { ENGINE_CONTENT } from './engine';
+import { LORE_CONTENT } from './lore';
+import { MYTH_CONTENT } from './myth';
+import type { ContentKey, ContentPage } from './types';
+
+export const CONTENT_PAGES: Record<ContentKey, ContentPage> = {
+	myth: MYTH_CONTENT,
+	lore: LORE_CONTENT,
+	engine: ENGINE_CONTENT,
+	axzio: AXZIO_CONTENT
+};
+
+export function getContent(key: ContentKey): ContentPage {
+	return CONTENT_PAGES[key];
+}
+
+export function getAllContent(): ContentPage[] {
+	return Object.values(CONTENT_PAGES);
+}
