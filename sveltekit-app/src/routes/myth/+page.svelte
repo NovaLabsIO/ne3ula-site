@@ -1,3 +1,15 @@
+<script lang="ts">
+  import Footer from '$lib/components/Footer.svelte';
+  import PageNav from '$lib/components/PageNav.svelte';
+
+  const navItems = [
+    { label: 'MUSIC', href: '/music' },
+    { label: 'MYTH', current: true },
+    { label: 'AXZIO', href: '/axzio' },
+    { label: 'E3', href: '/engine' }
+  ];
+</script>
+
 <svelte:head>
   <title>MYTH — NE3ULA</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -38,42 +50,18 @@
       <p>What legend will you choose?</p>
     </section>
 
-    <div class="nav">
-      <a class="btn" href="/music">MUSIC</a>
-      <span class="btn nav-current" aria-current="page">MYTH</span>
-      <a class="btn" href="/axzio">AXZIO</a>
-      <a class="btn" href="/engine">E3</a>
-    </div>
+    <PageNav items={navItems} />
   </div>
 </main>
 
-<div class="footer">
-  <span>© NE3ULA</span>
-  <span>LIVE YOUR LEGEND</span>
-</div>
+<Footer />
 
 <style>
-  :global(html, body) {
-    margin: 0;
-    min-height: 100%;
+  :global(body) {
     background:
       radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.08), transparent 34%),
       radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.03), transparent 52%),
       linear-gradient(180deg, #020202 0%, #05060a 46%, #020202 100%);
-    color: #fff;
-    font-family:
-      system-ui,
-      -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
-      Roboto,
-      Helvetica,
-      Arial,
-      sans-serif;
-  }
-
-  :global(body) {
-    min-height: 100vh;
   }
 
   .wrap {
@@ -137,63 +125,6 @@
     margin: 2px 0;
   }
 
-  .nav {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .btn {
-    display: inline-block;
-    text-decoration: none;
-    color: #fff;
-    padding: 12px 18px;
-    border-radius: 14px;
-    background: rgba(0, 0, 0, 0.28);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-size: 0.82rem;
-    transition:
-      transform 160ms ease,
-      border-color 160ms ease,
-      background 160ms ease;
-  }
-
-  a.btn:hover {
-    transform: translateY(-2px);
-    border-color: rgba(255, 255, 255, 0.36);
-    background: rgba(255, 255, 255, 0.06);
-  }
-
-  .nav-current {
-    opacity: 0.7;
-    pointer-events: none;
-    cursor: default;
-  }
-
-  .footer {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 18px 24px;
-    box-sizing: border-box;
-    pointer-events: none;
-  }
-
-  .footer span {
-    font-size: 11px;
-    line-height: 1.2;
-    letter-spacing: 0.38em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.45);
-  }
-
   @media (max-width: 720px) {
     .wrap {
       width: min(100vw - 32px, 980px);
@@ -205,13 +136,5 @@
       border-radius: 20px;
     }
 
-    .footer {
-      padding: 14px 16px;
-    }
-
-    .footer span {
-      font-size: 10px;
-      letter-spacing: 0.12em;
-    }
   }
 </style>

@@ -1,4 +1,7 @@
 <script lang="ts">
+  import Footer from '$lib/components/Footer.svelte';
+  import PageNav from '$lib/components/PageNav.svelte';
+
   const pathways = [
     {
       label: 'Reflect',
@@ -12,6 +15,13 @@
       label: 'Become',
       description: 'Action with intent. Signal with self.'
     }
+  ];
+
+  const navItems = [
+    { label: 'MUSIC', href: '/music' },
+    { label: 'MYTH', href: '/myth' },
+    { label: 'AXZIO', current: true },
+    { label: 'E3', href: '/engine' }
   ];
 </script>
 
@@ -50,37 +60,14 @@
     {/each}
   </section>
 
-  <div class="nav">
-    <a class="btn" href="/music">MUSIC</a>
-    <a class="btn" href="/myth">MYTH</a>
-    <span class="btn nav-current" aria-current="page">AXZIO</span>
-    <a class="btn" href="/engine">E3</a>
-  </div>
+  <PageNav items={navItems} />
 </main>
 
-<div class="footer-line">
-  <div class="left">© NE3ULA</div>
-  <div class="right">LIVE YOUR LEGEND</div>
-</div>
+<Footer variant="mono" />
 
 <style>
-  :global(html, body) {
-    margin: 0;
-    min-height: 100%;
-  }
-
   :global(body) {
-    min-height: 100vh;
     color: rgba(245, 248, 255, 0.94);
-    font-family:
-      system-ui,
-      -apple-system,
-      BlinkMacSystemFont,
-      'Segoe UI',
-      Roboto,
-      Helvetica,
-      Arial,
-      sans-serif;
     background:
       radial-gradient(circle at 50% 18%, rgba(182, 201, 255, 0.12), transparent 26%),
       radial-gradient(circle at 50% 65%, rgba(88, 113, 184, 0.1), transparent 42%),
@@ -265,69 +252,6 @@
     border-color: rgba(205, 220, 255, 0.56);
   }
 
-  .nav {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .btn {
-    display: inline-block;
-    text-decoration: none;
-    color: #fff;
-    padding: 12px 18px;
-    border-radius: 14px;
-    background: rgba(0, 0, 0, 0.28);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-size: 0.82rem;
-    transition:
-      transform 160ms ease,
-      border-color 160ms ease,
-      background 160ms ease;
-  }
-
-  a.btn:hover {
-    transform: translateY(-2px);
-    border-color: rgba(255, 255, 255, 0.36);
-    background: rgba(255, 255, 255, 0.06);
-  }
-
-  .nav-current {
-    opacity: 0.7;
-    pointer-events: none;
-    cursor: default;
-  }
-
-  .footer-line {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 28px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    pointer-events: none;
-  }
-
-  .footer-line .left,
-  .footer-line .right {
-    font:
-      12px/1.2 ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      Monaco,
-      Consolas,
-      monospace;
-    letter-spacing: 0.38em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.55);
-    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
-  }
-
   @media (max-width: 900px) {
     .pathway {
       gap: 14px;
@@ -338,15 +262,6 @@
       letter-spacing: 0.24em;
     }
 
-    .footer-line {
-      padding: 22px 20px;
-    }
-
-    .footer-line .left,
-    .footer-line .right {
-      letter-spacing: 0.25em;
-      font-size: 11px;
-    }
   }
 
   @media (max-width: 700px) {
@@ -383,14 +298,5 @@
       font-size: 11px;
     }
 
-    .footer-line {
-      padding: 16px;
-    }
-
-    .footer-line .left,
-    .footer-line .right {
-      font-size: 10px;
-      letter-spacing: 0.12em;
-    }
   }
 </style>

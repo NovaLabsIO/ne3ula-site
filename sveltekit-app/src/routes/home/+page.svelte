@@ -1,3 +1,7 @@
+<script lang="ts">
+  import Footer from '$lib/components/Footer.svelte';
+</script>
+
 <svelte:head>
   <title>HOME — NE3ULA</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -42,30 +46,11 @@
   </div>
 </main>
 
-<div class="footer">
-  <span>© NE3ULA</span>
-  <span>LIVE YOUR LEGEND</span>
-</div>
+<Footer variant="compact" />
 
 <style>
-  :global(html, body) {
-    margin: 0;
-    min-height: 100%;
-    background: #000;
-    color: #fff;
-    font-family:
-      system-ui,
-      -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
-      Roboto,
-      Helvetica,
-      Arial,
-      sans-serif;
-  }
-
   :global(body) {
-    min-height: 100vh;
+    background: #000;
   }
 
   .wrap {
@@ -160,23 +145,6 @@
     text-transform: uppercase;
   }
 
-  .footer {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 18px 24px;
-    box-sizing: border-box;
-    font-size: 12px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    opacity: 0.65;
-    pointer-events: none;
-  }
-
   @media (max-width: 720px) {
     .wrap {
       width: min(100vw - 32px, 1100px);
@@ -197,10 +165,5 @@
       border-radius: 20px;
     }
 
-    .footer {
-      padding: 14px 16px;
-      font-size: 10px;
-      letter-spacing: 0.12em;
-    }
   }
 </style>

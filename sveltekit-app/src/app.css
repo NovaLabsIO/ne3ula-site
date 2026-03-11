@@ -1,0 +1,133 @@
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: #fff;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+}
+
+.page-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.page-btn {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+a.page-btn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.36);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.page-btn-current {
+  opacity: 0.7;
+  pointer-events: none;
+  cursor: default;
+}
+
+.site-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 24px;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.site-footer span {
+  font-size: 11px;
+  line-height: 1.2;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.site-footer--compact span {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.site-footer--mono {
+  align-items: baseline;
+  padding: 28px 40px;
+}
+
+.site-footer--mono span {
+  font:
+    12px/1.2 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    monospace;
+  letter-spacing: 0.38em;
+  color: rgba(255, 255, 255, 0.55);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
+}
+
+@media (max-width: 900px) {
+  .site-footer--mono {
+    padding: 22px 20px;
+  }
+
+  .site-footer--mono span {
+    letter-spacing: 0.25em;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 720px) {
+  .site-footer {
+    padding: 14px 16px;
+  }
+
+  .site-footer span {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+  }
+}
+
+@media (max-width: 700px) {
+  .site-footer--mono {
+    padding: 16px;
+  }
+
+  .site-footer--mono span {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+  }
+}

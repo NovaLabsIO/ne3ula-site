@@ -8,6 +8,9 @@
 </svelte:head>
 
 <script lang="ts">
+  import Footer from '$lib/components/Footer.svelte';
+  import PageNav from '$lib/components/PageNav.svelte';
+
   const featuredReleases = [
     {
       title: '3EL1EVE 1N',
@@ -66,6 +69,12 @@
       muted: '(Coming Soon)'
     }
   ];
+
+  const navItems = [
+    { label: 'MYTH', href: '/myth' },
+    { label: 'AXZIO', href: '/axzio' },
+    { label: 'E3', href: '/engine' }
+  ];
 </script>
 
 <main class="wrap">
@@ -75,11 +84,7 @@
       <h1>MUSIC</h1>
       <p class="music-subline">Signal</p>
 
-      <div class="nav">
-        <a class="btn" href="/myth">MYTH</a>
-        <a class="btn" href="/axzio">AXZIO</a>
-        <a class="btn" href="/engine">E3</a>
-      </div>
+      <PageNav items={navItems} className="music-nav" />
     </section>
 
     <section class="card music-section">
@@ -91,14 +96,14 @@
             <h3>{release.title}</h3>
             <p>{release.year}</p>
             <div class="music-links">
-              <a class="btn" href={release.href} target="_blank" rel="noopener noreferrer">Listen</a>
+              <a class="page-btn" href={release.href} target="_blank" rel="noopener noreferrer">Listen</a>
             </div>
           </article>
         {/each}
       </div>
 
       <p class="music-note">
-        <a class="btn" href="https://soundcloud.com/ne3ula" target="_blank" rel="noopener noreferrer">
+        <a class="page-btn" href="https://soundcloud.com/ne3ula" target="_blank" rel="noopener noreferrer">
           SoundCloud Home
         </a>
       </p>
@@ -115,7 +120,7 @@
             {#if item.links}
               <div class="music-links">
                 {#each item.links as link}
-                  <a class="btn" href={link.href} target="_blank" rel="noopener noreferrer">
+                  <a class="page-btn" href={link.href} target="_blank" rel="noopener noreferrer">
                     {link.label}
                   </a>
                 {/each}
@@ -138,7 +143,7 @@
       <article class="music-item">
         <h3>Tutorials / Production</h3>
         <div class="music-links">
-          <a class="btn" href="https://www.youtube.com/@ne3ula_db" target="_blank" rel="noopener noreferrer">
+          <a class="page-btn" href="https://www.youtube.com/@ne3ula_db" target="_blank" rel="noopener noreferrer">
             Open
           </a>
         </div>
@@ -157,7 +162,7 @@
             {#if item.links}
               <div class="music-links">
                 {#each item.links as link}
-                  <a class="btn" href={link.href} target="_blank" rel="noopener noreferrer">
+                  <a class="page-btn" href={link.href} target="_blank" rel="noopener noreferrer">
                     {link.label}
                   </a>
                 {/each}
@@ -198,30 +203,11 @@
   </div>
 </main>
 
-<div class="footer">
-  <span>© NE3ULA</span>
-  <span>LIVE YOUR LEGEND</span>
-</div>
+<Footer variant="compact" />
 
 <style>
-  :global(html, body) {
-    margin: 0;
-    min-height: 100%;
-    background: #000;
-    color: #fff;
-    font-family:
-      system-ui,
-      -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
-      Roboto,
-      Helvetica,
-      Arial,
-      sans-serif;
-  }
-
   :global(body) {
-    min-height: 100vh;
+    background: #000;
   }
 
   .wrap {
@@ -288,39 +274,14 @@
     opacity: 0.72;
   }
 
-  .nav,
   .music-links {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
   }
 
-  .nav {
-    justify-content: center;
+  :global(.music-nav) {
     margin-top: 8px;
-  }
-
-  .btn {
-    display: inline-block;
-    text-decoration: none;
-    padding: 12px 18px;
-    border: 1px solid rgba(255, 255, 255, 0.24);
-    border-radius: 14px;
-    background: rgba(0, 0, 0, 0.28);
-    color: #fff;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-size: 0.82rem;
-    transition:
-      transform 160ms ease,
-      border-color 160ms ease,
-      background 160ms ease;
-  }
-
-  .btn:hover {
-    transform: translateY(-2px);
-    border-color: rgba(255, 255, 255, 0.36);
-    background: rgba(255, 255, 255, 0.06);
   }
 
   .music-grid,
@@ -359,23 +320,6 @@
     gap: 8px;
   }
 
-  .footer {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 18px 24px;
-    box-sizing: border-box;
-    font-size: 12px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    opacity: 0.65;
-    pointer-events: none;
-  }
-
   @media (max-width: 900px) {
     .music-grid,
     .music-row {
@@ -394,10 +338,5 @@
       border-radius: 20px;
     }
 
-    .footer {
-      padding: 14px 16px;
-      font-size: 10px;
-      letter-spacing: 0.12em;
-    }
   }
 </style>
