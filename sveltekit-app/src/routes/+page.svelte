@@ -1,5 +1,6 @@
 <script lang="ts">
   import { browser } from '$app/environment';
+  import { ASSETS } from '$lib/assets/registry';
 
   if (browser) {
     $effect(() => {
@@ -17,7 +18,7 @@
   <meta name="description" content="Enter NE3ULA." />
 </svelte:head>
 
-<div class="stage"></div>
+<div class="stage" style={`background-image: url(${ASSETS.nebula.mark})`}></div>
 
 <main class="wrap">
   <div class="cta-stack">
@@ -50,7 +51,9 @@
   .stage {
     position: fixed;
     inset: 0;
-    background: url('/assets/nebula-mark.png') center center / contain no-repeat;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
     opacity: 1;
     z-index: 0;
     pointer-events: none;
