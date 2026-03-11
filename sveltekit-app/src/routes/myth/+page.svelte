@@ -1,6 +1,9 @@
 <script lang="ts">
   import Footer from '$lib/components/Footer.svelte';
   import PageNav from '$lib/components/PageNav.svelte';
+  import { getContent } from '$lib/content/get-content';
+
+  const page = getContent('myth');
 
   const navItems = [
     { label: 'MUSIC', href: '/music' },
@@ -11,43 +14,27 @@
 </script>
 
 <svelte:head>
-  <title>MYTH — NE3ULA</title>
+  <title>{page.title} — NE3ULA</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="The NE3ULA myth and architecture of becoming." />
+  <meta name="description" content={page.description} />
 </svelte:head>
 
 <main class="wrap">
   <div class="card lore-shell">
     <section class="lore-section">
-      <h1>MYTH</h1>
+      <h1>{page.title}</h1>
 
-      <h2>The Space Between</h2>
-      <p>NE3ULA is the empty space between the noise.</p>
-      <p>The raw, chaotic building blocks of existence.<br />Unformed. Unjudged. Unclaimed.</p>
-      <p>It is where awareness returns<br />and chaos can be shaped into beauty.</p>
-      <p>NE3ULA is not the structure.<br />It is the field in which structure becomes possible.</p>
+      {#each page.sections as section, index}
+        <h2>{section.heading}</h2>
 
-      <hr />
+        {#each section.body as paragraph}
+          <p>{paragraph}</p>
+        {/each}
 
-      <h2>From Chaos to Creation</h2>
-      <p>Chaos is not the enemy.<br />It is material.</p>
-      <p>Emotion. Memory. Fear. Desire.<br />Frequency. Pattern. Energy.</p>
-      <p>All of it can be composed.</p>
-      <p>That is where legend begins.</p>
-
-      <hr />
-
-      <h2>The Architecture of Becoming</h2>
-      <p>NE3ULA is the space.<br />Myth is the meaning.<br />AXZIO is the interface.<br />E3 is the engine.</p>
-      <p>Each layer shapes the next.</p>
-      <p>And all of it begins with space.</p>
-
-      <hr />
-
-      <h2>Live Your Legend</h2>
-      <p>NE3ULA does not define you.</p>
-      <p>It gives the space and framework<br />so you can decide who you are becoming.</p>
-      <p>What legend will you choose?</p>
+        {#if index < page.sections.length - 1}
+          <hr />
+        {/if}
+      {/each}
     </section>
 
     <PageNav items={navItems} />
@@ -113,6 +100,7 @@
     color: rgba(255, 255, 255, 0.62);
     font-size: 15px;
     line-height: 1.6;
+    white-space: pre-line;
   }
 
   hr {
