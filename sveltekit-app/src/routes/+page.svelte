@@ -1,2 +1,92 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+  import nebulaMark from '$lib/assets/nebula-mark.png';
+</script>
+
+<svelte:head>
+  <title>NE3ULA</title>
+  <meta name="description" content="Enter NE3ULA." />
+</svelte:head>
+
+<div class="stage" style={`background-image: url(${nebulaMark});`}></div>
+
+<main class="wrap">
+  <div class="cta-stack">
+    <div class="tagline">LIVE YOUR LEGEND</div>
+    <a href="/home">ENTER</a>
+  </div>
+</main>
+
+<style>
+  :global(html, body) {
+    height: 100%;
+    margin: 0;
+  }
+
+  :global(body) {
+    background: #000;
+    color: #fff;
+    overflow: hidden;
+    font-family:
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      Helvetica,
+      Arial,
+      sans-serif;
+  }
+
+  .stage {
+    position: fixed;
+    inset: 0;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 1;
+    z-index: 0;
+    filter: drop-shadow(0 30px 160px rgba(255, 255, 255, 0.06));
+  }
+
+  .wrap {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    display: grid;
+    place-items: end center;
+    padding-bottom: 8vh;
+  }
+
+  .cta-stack {
+    position: fixed;
+    left: 50%;
+    bottom: 8vh;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2vh;
+  }
+
+  .tagline {
+    font: 11px/1.4 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    letter-spacing: 0.38em;
+    opacity: 0.5;
+    text-transform: uppercase;
+    margin-top: 0.6vh;
+  }
+
+  a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 14px 26px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 14px;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    letter-spacing: 0.32em;
+    color: #fff;
+  }
+</style>
