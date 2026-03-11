@@ -66,18 +66,6 @@
 <Footer variant="mono" />
 
 <style>
-  :global(body) {
-    color: rgba(245, 248, 255, 0.94);
-    background:
-      linear-gradient(to bottom, rgba(3, 4, 10, 0.55), rgba(2, 3, 8, 0.7)),
-      url('/assets/shared/bg-enter-v2.png'),
-      linear-gradient(180deg, #02040a 0%, #070d1b 48%, #04070f 100%);
-    background-size: auto, cover, auto;
-    background-position: center, center, center;
-    background-repeat: repeat, no-repeat, repeat;
-    background-attachment: fixed;
-  }
-
   .enter-page {
     min-height: 100dvh;
     display: grid;
@@ -86,6 +74,15 @@
     padding: clamp(28px, 4vh, 56px) clamp(20px, 4vw, 56px) 132px;
     position: relative;
     box-sizing: border-box;
+    color: rgba(245, 248, 255, 0.94);
+    background-color: #02040a;
+    background-image:
+      linear-gradient(to bottom, rgba(3, 4, 10, 0.55), rgba(2, 3, 8, 0.7)),
+      url('/assets/shared/bg-enter-v2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
   }
 
   .hero {
@@ -267,7 +264,7 @@
   }
 
   @media (max-width: 700px) {
-    :global(body) {
+    .enter-page {
       background-attachment: scroll;
     }
 
