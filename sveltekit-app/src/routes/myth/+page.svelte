@@ -69,8 +69,8 @@
     margin: 0 auto;
     min-height: 100vh;
     display: grid;
-    place-items: center;
-    padding: 48px 0 96px;
+    place-items: start center;
+    padding: 8vh 0 96px;
     box-sizing: border-box;
   }
 

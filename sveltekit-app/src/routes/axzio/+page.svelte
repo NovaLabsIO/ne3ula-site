@@ -69,10 +69,12 @@
   :global(body) {
     color: rgba(245, 248, 255, 0.94);
     background:
-      radial-gradient(circle at 50% 18%, rgba(182, 201, 255, 0.12), transparent 26%),
-      radial-gradient(circle at 50% 65%, rgba(88, 113, 184, 0.1), transparent 42%),
       linear-gradient(to bottom, rgba(3, 4, 10, 0.55), rgba(2, 3, 8, 0.7)),
+      url('/assets/shared/bg-enter-v2.png'),
       linear-gradient(180deg, #02040a 0%, #070d1b 48%, #04070f 100%);
+    background-size: auto, cover, auto;
+    background-position: center, center, center;
+    background-repeat: repeat, no-repeat, repeat;
     background-attachment: fixed;
   }
 

@@ -14,5 +14,6 @@
   title="E3"
   description="The NE3ULA E3 placeholder page."
   bodyText="Placeholder content. Replace with final experience."
+  backgroundImageUrl="/assets/home/bg-home.png"
   {navItems}
 />

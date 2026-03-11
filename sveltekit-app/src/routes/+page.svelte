@@ -1,5 +1,15 @@
 <script lang="ts">
-  import nebulaMark from '$lib/assets/nebula-mark.png';
+  import { browser } from '$app/environment';
+
+  if (browser) {
+    $effect(() => {
+      document.body.classList.add('splash-page');
+
+      return () => {
+        document.body.classList.remove('splash-page');
+      };
+    });
+  }
 </script>
 
 <svelte:head>
@@ -7,7 +17,7 @@
   <meta name="description" content="Enter NE3ULA." />
 </svelte:head>
 
-<div class="stage" style={`background-image: url(${nebulaMark});`}></div>
+<div class="stage"></div>
 
 <main class="wrap">
   <div class="cta-stack">
@@ -22,7 +32,7 @@
     margin: 0;
   }
 
-  :global(body) {
+  :global(body.splash-page) {
     background: #000;
     color: #fff;
     overflow: hidden;
@@ -40,9 +50,7 @@
   .stage {
     position: fixed;
     inset: 0;
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background: url('/assets/shared/nebula-mark.png') center center / cover no-repeat;
     opacity: 1;
     z-index: 0;
     filter: drop-shadow(0 30px 160px rgba(255, 255, 255, 0.06));

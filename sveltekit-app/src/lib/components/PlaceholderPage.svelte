@@ -12,12 +12,14 @@
     title,
     description,
     bodyText,
-    navItems
+    navItems,
+    backgroundImageUrl
   }: {
     title: string;
     description: string;
     bodyText: string;
     navItems: NavItem[];
+    backgroundImageUrl?: string;
   } = $props();
 </script>
 
@@ -26,6 +28,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content={description} />
 </svelte:head>
+
+{#if backgroundImageUrl}
+  <div class="stage" style={`background-image: url('${backgroundImageUrl}')`}></div>
+{/if}
 
 <main class="wrap">
   <div class="card placeholder-card">
@@ -52,9 +58,11 @@
     margin: 0 auto;
     min-height: 100vh;
     display: grid;
-    place-items: center;
-    padding: 48px 0 96px;
+    place-items: start center;
+    padding: 8vh 0 96px;
     box-sizing: border-box;
+    position: relative;
+    z-index: 2;
   }
 
   .card {
@@ -71,6 +79,15 @@
 
   .placeholder-card {
     text-align: center;
+  }
+
+  .stage {
+    position: fixed;
+    inset: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
   }
 
   .kicker {

@@ -6,6 +6,8 @@ body {
 body {
   margin: 0;
   min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
   color: #fff;
   font-family:
     system-ui,

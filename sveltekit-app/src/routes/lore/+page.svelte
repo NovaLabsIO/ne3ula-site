@@ -14,5 +14,6 @@
   title="LORE"
   description="The NE3ULA lore placeholder page."
   bodyText="Placeholder content. Replace with final experience."
+  backgroundImageUrl="/assets/home/bg-home.png"
   {navItems}
 />
