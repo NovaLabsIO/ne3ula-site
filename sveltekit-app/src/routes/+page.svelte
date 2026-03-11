@@ -50,10 +50,10 @@
   .stage {
     position: fixed;
     inset: 0;
-    background: url('/assets/nebula-mark.png') center center / cover no-repeat;
+    background: url('/assets/nebula-mark.png') center center / contain no-repeat;
     opacity: 1;
     z-index: 0;
-    filter: drop-shadow(0 30px 160px rgba(255, 255, 255, 0.06));
+    pointer-events: none;
   }
 
   .wrap {
