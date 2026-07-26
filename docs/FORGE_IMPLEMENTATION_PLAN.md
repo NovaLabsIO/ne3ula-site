@@ -11,20 +11,47 @@ This staged plan is proposed. Completion of one phase does not authorize the nex
 - **Approval gate:** Approve the audit findings and proposed direction before connecting any service.
 - **Rollback:** Revert documentation/scaffolding commit; no external state exists.
 
-## Phase 2 — Supabase connection and migrations
+## Phase 2A — Audit and baseline design
 
-- **Scope:** Confirm AXZIO Supabase ownership/environments; add approved client/server integration and reviewed schema migrations.
-- **Deliverables:** Environment configuration, migrations for profiles and Forge memberships, RLS policies, and migration records.
-- **Prerequisites:** Explicit approval, project access, environment mapping, data model, RLS review, and rollback plan.
-- **Validation:** Non-production migration tests, policy tests, schema review, and secret-handling review.
-- **Approval gate:** Explicit approval before project connection and each production migration.
-- **Rollback:** Tested down/compensating migration where safe; restore configuration without deleting user data.
+- **Scope:** Confirm the provisional development classification, document the observed AXZIO schema, and prepare non-executable Forge schema/RLS design drafts.
+- **Deliverables:** Read-only audit record, observational schema baseline, unresolved-decision register, and design-only SQL for profiles, applications, memberships, RLS, and timestamp handling outside the migration directory.
+- **Prerequisites:** Explicit approval for local design work; no remote mutation authority.
+- **Validation:** Documentation review, design security review, diff/secret review, and confirmation that remote state remains unchanged.
+- **Approval gate:** Approve the project classification, baseline, and proposed data/RLS direction before creating local migrations or connecting application code.
+- **Rollback:** Revert local design files only; no remote state exists.
+
+## Phase 2B — Local migration and RLS design
+
+- **Scope:** Turn approved design drafts into reviewed local migration candidates and test plans without applying them remotely.
+- **Deliverables:** Timestamped local migration candidates, policy/grant test cases, application-submission operation design, membership-administration design, baseline reconciliation plan, and rollback/compensation plan.
+- **Prerequisites:** Phase 2A approval; approved product decisions, data model, and security direction.
+- **Validation:** SQL review, least-privilege review, cross-user policy test design, and secret-handling review.
+- **Approval gate:** Approve the exact local migration candidates and development-project application plan.
+- **Rollback:** Revise or remove unapproved local candidates; no remote state exists.
+
+## Phase 2C — Development-project application
+
+- **Scope:** Apply explicitly approved migrations only to the confirmed development project and validate the resulting metadata and policies.
+- **Deliverables:** Applied development migration record, validation evidence, and any approved development-only configuration.
+- **Prerequisites:** Phase 2B approval, confirmed project ownership, development-environment confirmation, backup/rollback plan, and explicit remote-change authorization.
+- **Validation:** Migration execution review, policy tests, schema comparison, and no-anonymous/cross-user access checks.
+- **Approval gate:** Approve completion of development validation before preview/production planning.
+- **Rollback:** Use the approved compensating or rollback procedure; do not delete user data.
+
+## Phase 2D — Validation and production-environment planning
+
+- **Scope:** Plan isolated preview and production environments, deployment configuration, migration promotion, monitoring, and rollback.
+- **Deliverables:** Environment map, promotion checklist, production migration plan, observability plan, and operational runbook.
+- **Prerequisites:** Phase 2C validation, approved environment ownership, and the approved data/security direction from Phase 2A–2C.
+- **Validation:** Environment separation review, redirect allowlist review, rollback rehearsal plan, and production-readiness review.
+- **Approval gate:** Explicit approval of preview/production environment creation, configuration, and any production migration.
+- **Rollback:** Preserve the development baseline and use the approved environment-specific rollback plan.
 
 ## Phase 3 — Authentication foundation
 
 - **Scope:** Implement approved sign-up, sign-in, sign-out, session, callback, verification, and reset foundations.
 - **Deliverables:** Auth routes, server/session handling, guarded route foundation, error states, and tests.
-- **Prerequisites:** Phase 2 complete; approved redirect allowlists, email behavior, RLS, and server runtime strategy.
+- **Prerequisites:** Phase 2C development validation and Phase 2D environment plan; approved redirect allowlists, email behavior, RLS, and server runtime strategy.
 - **Validation:** Local/non-production auth scenarios, unauthorized-access tests, callback/reset tests, and security review.
 - **Approval gate:** Approve identity UX, session policy, and production auth configuration.
 - **Rollback:** Disable application auth entry/deployment while preserving identity data; do not delete `auth.users` without separate approval.
@@ -32,7 +59,7 @@ This staged plan is proposed. Completion of one phase does not authorize the nex
 ## Phase 4 — Forge onboarding/application
 
 - **Scope:** Build approved registration, onboarding, application, and membership-submission flows.
-- **Deliverables:** Forge join flow, profile/membership writes, validation, consent/copy, and tests.
+- **Deliverables:** Forge join flow, profile and application-draft writes, approved server-side submission flow, validation, consent/copy, and tests.
 - **Prerequisites:** Phase 3 complete and approved data fields, retention, review workflow, and RLS policies.
 - **Validation:** Field validation, user-owned write/read checks, privacy review, and accessibility review.
 - **Approval gate:** Approve user data collection, membership statuses, and operational review process.

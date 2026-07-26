@@ -41,9 +41,10 @@ A dedicated origin separates the public Framer experience from authenticated app
 auth.users
 └── canonical authentication identity (UUID)
     ├── public.profiles — universal NE3ULA profile
-    ├── public.forge_memberships — Forge application, participation, membership status, contribution data
+    ├── public.forge_applications — user-submitted Forge interest, intent, and application data
+    ├── public.forge_memberships — administrator-controlled membership state, contribution role, path, and joining data
     ├── future AXZIO tables — reference auth.users.id
     └── future AI.d tables — reference auth.users.id
 ```
 
-The Forge must not create a separate user or authentication system. Membership data must be distinct from universal identity data, and canonical philosophy/ontology must remain outside application-owned profile and membership records.
+The Forge must not create a separate user or authentication system. Application data, membership administration, and universal identity data are separate concerns. Canonical philosophy/ontology must remain outside application-owned records.
