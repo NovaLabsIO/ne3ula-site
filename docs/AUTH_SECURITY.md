@@ -6,8 +6,11 @@ Authentication UI is not a security boundary. Every private operation must be en
 
 ## Required controls for a future implementation
 
-- Enable RLS on all exposed application tables, including `public.profiles` and `public.forge_memberships`.
-- Create user-owned policies that limit reads and writes to records whose user key matches the authenticated user UUID.
+- Enable RLS on all exposed application tables, including `public.profiles`, `public.forge_applications`, and `public.forge_memberships`.
+- Create user-owned policies that limit reads and permitted writes to records whose user key matches the authenticated user UUID. Profiles are private to their owners initially.
+- Use both RLS and least-privilege column grants: RLS protects rows, while column grants keep IDs, ownership keys, timestamps, submission state, and administrator-controlled membership fields out of client writes.
+- Keep Forge application submission separate from administrator-controlled membership state. Client users must not create, update, or delete membership rows.
+- Make submitted Forge applications immutable to the client. The draft-to-submitted transition requires a separately approved server-side operation or carefully reviewed RPC; do not trust browser-controlled `submitted_at` input.
 - Use foreign keys and constraints so membership and future AXZIO/AI.d records reference `auth.users.id`.
 - Keep service-role access server-only, minimal, and limited to approved administrative/background operations. Never expose it to the browser, Framer, logs, or committed files.
 - Verify sessions server-side where access decisions affect private data; do not rely solely on client-side redirects or hidden UI.
@@ -26,4 +29,4 @@ Framer remains the presentation layer. It must not contain service-role credenti
 
 ## Approval gate
 
-Before Phase 3, approve the data model, RLS policies, session strategy, email templates/verification behavior, reset flow, redirect allowlists, server runtime, monitoring, and incident/rollback plan.
+Before Phase 3, approve the data model, RLS policies, application-submission operation, membership-administration model, session strategy, email templates/verification behavior, reset flow, redirect allowlists, server runtime, monitoring, and incident/rollback plan.
