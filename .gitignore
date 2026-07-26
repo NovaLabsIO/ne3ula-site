@@ -6,3 +6,14 @@
 
 3:8:26 PromptReruns.txt
 3:8:26 PromptReruns2.txt
+
+# Environment files and local Supabase CLI state
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+!**/.env.example
+**/supabase/.temp/
+**/supabase/.branches/
+.pnpm-store/

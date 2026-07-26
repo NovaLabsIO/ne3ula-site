@@ -1,283 +1,57 @@
-# NE3ULA Core — Agent Instructions
+# NE3ULA — Agent Instructions
 
-This file defines how AI coding agents should behave when working in the NE3ULA core repository.
+These instructions apply to work in this repository unless the user explicitly overrides them.
 
-Agents must follow these instructions unless the user explicitly overrides them.
+## Repository and production context
 
----
+- Framer is the current public NE3ULA website and public presentation layer.
+- `ne3ula.com` redirects through Cloudflare to Framer. Existing redirects, DNS, Cloudflare settings, Framer configuration, and production deployments must not be changed without explicit approval.
+- This repository is the coded-application and system-support layer; it is not the canonical public website.
+- The legacy static implementation remains at the repository root and must be preserved unless a task explicitly changes it.
+- `sveltekit-app/` is the canonical coded application within this repository. It is not the canonical public website.
+- The Forge authentication application is proposed architecture only. Do not represent it as deployed or configure it without approval.
+- `ne3ula-knowledge` is canonical for philosophy and ontology. Preserve the existing kernel, content, knowledge, and philosophy work here without duplicating or redefining canonical doctrine.
 
-# 1. Project Context
+Read these documents before architecture, workflow, deployment, identity, or content-system changes:
 
-This repository contains the core NE3ULA website.
+- `docs/CURRENT_DEPLOYMENT.md`
+- `docs/SOURCE_OF_TRUTH.md`
+- `docs/BUILD_WORKFLOW.md`
+- `docs/DEV_MAP.md`
+- `docs/NAV_SYSTEM_DIAGRAM.md`
+- `docs/CODED_SITE_REFERENCE.md` when editing preserved routes, visual work, navigation, or content
+- Forge-specific documents when relevant
 
-The project is a static site deployed through:
+## Preserve existing work
 
-GitHub → Cloudflare Pages
+Keep existing routes, assets, visual language, content systems, NE3ULA kernel, knowledge intake layer, philosophy planning, and approved documentation intact unless a factual correction or explicitly approved change requires otherwise. Do not delete legacy code, move `sveltekit-app/`, rewrite routes, or introduce speculative redesigns.
 
-The canonical project documentation lives in:
+The legacy route model includes `/`, `/home`, `/myth`, `/music`, `/axzio`, `/e3`, `/engine`, and `/lore`. The coded SvelteKit app currently implements corresponding routes. Preserve their conceptual distinctions and the established restrained, dark, cinematic visual language.
 
-- docs/SOURCE_OF_TRUTH.md
-- docs/BUILD_WORKFLOW.md
-- docs/DEV_MAP.md
-- docs/NAV_SYSTEM_DIAGRAM.md
+Follow `CODED_SITE_REFERENCE.md` for preserved route purposes, user journey, navigation conventions, visual language, editing priorities, and mobile/responsiveness expectations. That guidance describes the coded experience only; it is not Framer production guidance or canonical philosophy.
 
-Before making changes, review those files for architectural and workflow context.
+## Safe working method
 
----
+1. Work on a feature branch; never work directly on `main` unless explicitly instructed.
+2. Keep diffs focused, minimal, and reviewable.
+3. Use feature branches and review gates before integration.
+4. Prefer reversible changes and report architecture conflicts before difficult-to-reverse work.
+5. Do not change production settings, redirects, DNS, Framer, Cloudflare, or external services without explicit approval.
 
-# 2. Canonical Architecture
+## Forge and identity boundaries
 
-The conceptual stack is:
+- A dedicated Forge application at `forge.ne3ula.com` is a recommendation pending approval, not current infrastructure.
+- The existing AXZIO Supabase project is the intended shared identity backend, but agents must not connect to it, add credentials, create migrations, or modify it without explicit approval.
+- Do not create a second Forge identity system. Future Forge, AXZIO, and AI.d records should use the shared Supabase user UUID.
+- Never commit credentials or expose server-only secrets in browser code, Framer, documentation examples, logs, or tests.
+- Database migrations, project configuration, redirect URLs, and production deployment configuration all require explicit approval.
 
-NE3ULA = space  
-Myth = meaning  
-AXZIO = interface  
-E3 = engine  
+## Documentation and content discipline
 
-The current site architecture is centered around:
+Clearly distinguish legacy, current repository, current public production, and proposed systems. Mark unknown deployment facts as unknown; do not invent them. Update architecture documentation when a factual architecture claim changes, while preserving still-valid conceptual material.
 
-- `/` → entry threshold
-- `/home` → primary hub
-- `/myth` → philosophy layer
-- `/music` → creative signal
-- `/axzio` → interface entry
-- `/e3` → future engine layer
-- `/engine` → future infrastructure layer
-- `/lore` → future narrative layer
+Do not add or rewrite philosophy, ontology, or conceptual copy unless explicitly requested. Preserve navigation consistency, mobile behavior, shared styles, and approved visual/content work.
 
-Do not restructure page hierarchy, routes, or folder organization unless explicitly instructed.
+## Validation and handoff
 
-Do not merge or remove conceptually distinct routes unless explicitly instructed.
-
----
-
-# 3. Safe Working Method
-
-Agents should assume the preferred workflow is:
-
-1. Work on a feature branch, not `main`
-2. Keep tasks tightly scoped
-3. Keep diffs minimal and reviewable
-4. Preserve architecture unless explicitly instructed otherwise
-5. Prefer reversible changes
-
-If the user requests a major refactor, break the work into smaller bounded steps where possible.
-
-Preferred task style:
-
-- one category of change per run
-- styling only
-- navigation only
-- responsiveness only
-- page creation only
-
-Avoid bundling multiple large refactors into one task unless explicitly requested.
-
----
-
-# 4. Editing Priorities
-
-When making changes, prioritize the following:
-
-1. Preserve site architecture
-2. Preserve page routing
-3. Preserve existing content and copy unless explicitly instructed to rewrite
-4. Prefer shared styles and reusable systems
-5. Maintain or improve mobile responsiveness
-6. Keep the site visually cohesive with the established NE3ULA aesthetic
-
-Do not introduce unnecessary frameworks, tooling, or dependencies unless explicitly requested.
-
-Do not perform speculative redesigns.
-
-Do not rename files, folders, or routes without clear instruction.
-
----
-
-# 5. Visual Design Rules
-
-The established visual language is:
-
-- dark black / white palette
-- restrained, cinematic tone
-- subtle glassmorphism where already used
-- minimal typography
-- atmospheric, subtle motion
-- high contrast, premium restraint
-
-Avoid:
-
-- introducing new color systems without instruction
-- overusing gradients
-- bright or saturated UI treatments that drift from the core black/white look
-- flashy animation
-- cluttered layouts
-
-The site should feel:
-
-- calm
-- intentional
-- spacious
-- symbolic
-- premium
-
-When aligning inconsistent pages, match them to the core aesthetic already used by pages like `/myth` and `/axzio`.
-
----
-
-# 6. Styling Rules
-
-Shared styling lives in:
-
-- `/shared/styles.css`
-
-When possible:
-
-- prefer updating `/shared/styles.css`
-- reduce page-specific style duplication
-- avoid one-off visual overrides unless necessary
-
-If page-specific styling is required, keep it minimal and aligned with the shared system.
-
-Do not introduce visual drift between pages.
-
----
-
-# 7. Content Rules
-
-Unless explicitly requested:
-
-- do not add new conceptual copy
-- do not rewrite page messaging
-- do not expand philosophy sections
-- do not invent new site sections
-
-Default assumption:
-The task is implementation, polish, refactor, or consistency — not new conceptual development.
-
-If minor wording changes are necessary for layout or consistency, keep them minimal.
-
----
-
-# 8. Navigation Rules
-
-Maintain consistent navigation order where applicable:
-
-Music  
-Myth  
-AXZIO  
-E3  
-
-Avoid self-links where they are intentionally removed.
-
-Do not introduce inconsistent navigation patterns across top-level pages.
-
-Subpages should remain consistent with the parent site system.
-
----
-
-# 9. Documentation Rules
-
-When a task materially changes architecture, workflow, or developer behavior, update the relevant docs if appropriate:
-
-- docs/SOURCE_OF_TRUTH.md
-- docs/BUILD_WORKFLOW.md
-- docs/DEV_MAP.md
-- docs/NAV_SYSTEM_DIAGRAM.md
-
-Do not update docs unnecessarily for small styling changes.
-
-If a change affects agent behavior or preferred repo workflow, update this file.
-
----
-
-# 10. Diff Discipline
-
-Preferred output from an agent task:
-
-- small, focused changes
-- minimal unrelated edits
-- no unnecessary formatting churn
-- concise summary of modified files
-- concise explanation of why each changed file was modified
-
-Avoid touching unrelated files.
-
-Avoid broad repo-wide edits unless explicitly requested.
-
----
-
-# 11. Task Execution Pattern
-
-For most tasks, follow this pattern:
-
-1. Read relevant docs in `/docs`
-2. Inspect only the files relevant to the task
-3. Make the smallest effective set of changes
-4. Preserve structure and behavior
-5. Summarize the changed files clearly
-
-When working on styling tasks, likely relevant files include:
-
-- `/shared/styles.css`
-- page-specific `index.html` files for the target routes
-
-When working on architecture tasks, consult docs first before editing.
-
----
-
-# 12. Branching and Safety Assumptions
-
-Assume the preferred development model is:
-
-- `main` = stable / production-oriented branch
-- feature branches = safe working branches for experiments and refactors
-
-Agents should avoid assuming work should be done directly on `main`.
-
-If asked to make a risky change, prefer doing it in a way that is easy to review and revert.
-
----
-
-# 13. Deployment Awareness
-
-This repo deploys through GitHub to Cloudflare Pages.
-
-Agents do not need to redesign deployment workflow unless explicitly instructed.
-
-Do not make deployment-related changes unless the task specifically concerns deployment.
-
----
-
-# 14. Default Prompt Interpretation
-
-If a prompt is ambiguous, prefer the narrowest reasonable interpretation.
-
-Example:
-If the user says “unify styling,” interpret that as:
-- visual consistency
-- no architecture rewrite
-- no major copy rewrite
-- shared style cleanup where appropriate
-
-If the user says “improve page,” prefer polish and usability improvements over conceptual invention.
-
----
-
-# 15. NE3ULA-Specific Principle
-
-This repository is not a generic marketing site.
-
-It is a symbolic, layered gateway into the NE3ULA system.
-
-Agents should preserve that tone and not flatten it into a conventional startup or SaaS aesthetic.
-
-The site should feel like:
-- an entry point
-- a path system
-- a mythic interface
-- a restrained premium experience
-
----
-
-End of document.
+Run the relevant existing checks from `sveltekit-app/` for changes that affect it. Separate pre-existing failures from new failures. Summaries must name changed files, validation results, remaining risks, and any approval gate needed for the next phase.

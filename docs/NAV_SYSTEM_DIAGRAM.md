@@ -1,30 +1,43 @@
-# NE3ULA Core — Navigation System Diagram
+# NE3ULA — Navigation and System Diagram
 
-This diagram shows the current site routing and planned future expansion paths.
+## Current public production
 
+```mermaid
+flowchart LR
+    A[ne3ula.com] --> B[Cloudflare redirect]
+    B --> C[Framer public website]
+```
+
+This production redirect is confirmed context and must not be changed without explicit approval.
+
+## Current repository route model
+
+```mermaid
 flowchart TD
-    A["/ <br/> Entry Threshold <br/> LIVE YOUR LEGEND"] --> B["/home <br/> Primary Hub <br/> Choose Your Path"]
+    A["/ Entry Threshold"] --> B["/home Primary Hub"]
+    B --> C["/music Creative Signal"]
+    B --> D["/myth Philosophy Layer"]
+    B --> E["/axzio Interface Entry"]
+    B --> F["/e3 Engine Layer"]
+    F --> G["/engine Infrastructure Layer"]
+    F --> H["/lore Narrative Layer"]
+```
 
-    B --> C["/music <br/> Creative Signal"]
-    B --> D["/myth <br/> Philosophy Layer"]
-    B --> E["/axzio <br/> Interface Entry"]
-    B --> F["/e3 <br/> Engine Layer (Future)"]
+This diagram represents preserved legacy/static and SvelteKit coded routes. It is not the public-production navigation map.
 
-    D --> D1["The Space Between"]
-    D --> D2["From Chaos to Creation"]
-    D --> D3["The Architecture of Becoming"]
+See `CODED_SITE_REFERENCE.md` for the coded route purposes, existing user journey, and navigation conventions.
 
-    E --> E1["/axzio/reflect <br/> Awareness / Past"]
-    E --> E2["/axzio/create <br/> Agency / Present"]
-    E --> E3["/axzio/become <br/> Evolution / Future"]
+## Proposed Forge navigation (not implemented)
 
-    F --> G["/engine <br/> Infrastructure Layer"]
-    F --> H["/lore <br/> Narrative Archive"]
+```mermaid
+flowchart LR
+    F[Framer CTA] -. proposed link .-> G[forge.ne3ula.com/]
+    G --> L[/login]
+    G --> J[/join]
+    L --> C[/auth/callback]
+    J --> C
+    C --> D[/dashboard]
+    L --> R[/auth/reset-password]
+```
 
-    subgraph Conceptual Stack
-        S1["NE3ULA = Space"]
-        S2["Myth = Meaning"]
-        S3["AXZIO = Interface"]
-        S4["E3 = Engine"]
-        S1 --> S2 --> S3 --> S4
-    end
+The Forge diagram is a recommendation pending approval. No routes, DNS, redirects, or deployments are configured by this document.
